@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correct 1`] = `
+<div
+  className="chatBody"
+>
+  <div
+    class="my-avatar"
+  >
+    <img
+      alt="user avater"
+      src="kio.jpg"
+    />
+    <span>
+       
+    </span>
+  </div>
+</div>
+`;
