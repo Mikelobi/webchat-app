@@ -4,22 +4,19 @@ import Chat from "./Chat";
 
 export default function App() {
   const [name, setname] = useState();
-  const [message, setMessage] = useState("");
   const [chatPage, setChatPage] = useState();
-
-  const handleClick = () => {
-    setChatPage(true);
-  };
-  
+  const [message, setMessage] = useState("");
   const handleName = (e) => {
     setname(e.target.value);
   };
-    useEffect(() => {
+  useEffect(() => {
     if (!JSON.parse(window.localStorage.getItem("chat"))) {
       window.localStorage.setItem("chat", JSON.stringify([]));
     }
-  	});
-  
+  });
+  const handleClick = () => {
+    setChatPage(true);
+  };
   const handleSend = () => {
     const prev = JSON.parse(window.localStorage.getItem("chat"));
     const newState = [
@@ -30,20 +27,24 @@ export default function App() {
       }
     ];
     window.localStorage.setItem("chat", JSON.stringify(newState));
+    setMessage("");
   };
+
   return (
     <div className="App">
       {chatPage ? (
         <div className="wrapper">
           <div className="chat">
-          <Chat />
-            <input
-              value={message}
-              onChange={(e) => {
-                setMessage(e.target.value);
-              }}
-            />
-            <button onClick={handleSend}>Send Message </button>
+            <Chat name={name}/>
+            <div className="inputField">
+              <input
+                value={message}
+                onChange={(e) => {
+                  setMessage(e.target.value);
+                }}
+              />
+              <button onClick={handleSend}>Send</button>
+            </div>
           </div>
         </div>
       ) : (
