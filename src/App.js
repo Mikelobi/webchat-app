@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import Chat from "./Chat";
 
 export default function App() {
   const [name, setname] = useState();
@@ -35,6 +36,7 @@ export default function App() {
       {chatPage ? (
         <div className="wrapper">
           <div className="chat">
+          <Chat />
             <input
               value={message}
               onChange={(e) => {
